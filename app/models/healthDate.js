@@ -11,9 +11,10 @@ const fitnessFocusAreas = [
 
 const healthDateSchema = new mongoose.Schema(
 	{
-        date: {
-            type: Date,
-            required: true
+        dateString: {
+            type: String,
+            required: true,
+            unique: true
         },
 		goalStatement: {
             type: String,
@@ -38,12 +39,22 @@ const healthDateSchema = new mongoose.Schema(
 
 // A date can only be planned if it is today or in the future
 healthDateSchema.virtual('isPlannable').get(function() {
-    return this.date >= (new Date())
+    let today = new Date()
+    const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(today)
+    const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(today)
+    const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(today)
+    const todayString = `${year}-${month}-${day}`
+    return this.dateString >= todayString
 })
 
 // A date can only be tracked (logged) if it is today or in the future
 healthDateSchema.virtual('isTrackable').get(function() {
-    return this.date <= (new Date())
+    let today = new Date()
+    const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(today)
+    const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(today)
+    const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(today)
+    const todayString = `${year}-${month}-${day}`
+    return this.dateString <= todayString
 })
 
 module.exports = mongoose.model('HealthDate', healthDateSchema)
