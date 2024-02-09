@@ -25,16 +25,16 @@ It will be utilized by the **Health Oasis** client application. (URL coming soon
 |--------|------------------------|-------------------|
 | POST   | `/sign-up`             | `users#signup`    |
 | POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password/`    | `users#changepw`  |
-| DELETE | `/sign-out/`           | `users#signout`   |
+| PATCH  | `/change-password`     | `users#changepw`  |
+| DELETE | `/sign-out`            | `users#signout`   |
 
 
 ### User Profile Routes
 
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
-| GET    | `/profile`             | `users#profle`    |
-| PATCH  | `/profile/`            | `users#updateProfile` |
+| GET    | `/profile`             | `users#profile`   |
+| PATCH  | `/profile`             | `users#changeprofile` |
 
 
 ### My Health Date Routes
