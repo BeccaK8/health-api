@@ -19,6 +19,34 @@ It will be utilized by the **Health Oasis** client application. (URL coming soon
 
 ## Routes
 
+### Authentication Routes
+
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/sign-up`             | `users#signup`    |
+| POST   | `/sign-in`             | `users#signin`    |
+| PATCH  | `/change-password/`    | `users#changepw`  |
+| DELETE | `/sign-out/`           | `users#signout`   |
+
+
+### User Profile Routes
+
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| GET    | `/profile`             | `users#profle`    |
+| PATCH  | `/profile/`            | `users#updateProfile` |
+
+
+### My Health Date Routes
+
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| GET   | `/mydates`              | `mydates#index`   |
+| GET   | `/mydates/:id`          | `mydates#show`    |
+| POST   | `/mydates`             | `mydates#create`  |
+| PATCH  | `/mydates/:id`         | `mydates#update`  |
+| DELETE | `/mydates/:id`         | `mydates#delete`  |
+
 
 ## Technologies Used
 
