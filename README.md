@@ -8,7 +8,20 @@ The Health API will manage create, read, update, and delete functionality for:
 It will be utilized by the **Health Oasis** client application. (URL coming soon!)
 
 
-## Functionality
+## API Functionality
+
+### User Authentication
+
+AAV, I want to sign up for Health Oasis
+AAU, I want to sign into my account with Health Oasis
+AAU, I want to change my password
+AAU, I want to sign out of my account
+
+### User Profile
+
+AAU, I want to see my user profile
+AAU, I want to update my user profile
+
 
 ![API Functionality Stories](./readme/us_api.png)
 
