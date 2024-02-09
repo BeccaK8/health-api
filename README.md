@@ -54,11 +54,11 @@ AAU, I want to update my user profile
 
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
-| GET   | `/mydates`              | `mydates#index`   |
-| GET   | `/mydates/:id`          | `mydates#show`    |
-| POST   | `/mydates`             | `mydates#create`  |
-| PATCH  | `/mydates/:id`         | `mydates#update`  |
-| DELETE | `/mydates/:id`         | `mydates#delete`  |
+| GET   | `/dates`                | `health_date#index`   |
+| GET   | `/dates/:id`            | `health_date#show`    |
+| POST   | `/dates`               | `health_date#create`  |
+| PATCH  | `/dates/:id`           | `health_date#update`  |
+| DELETE | `/dates/:id`           | `health_date#delete`  |
 
 
 ## Technologies Used
