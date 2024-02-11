@@ -37,7 +37,8 @@ Note: A user will not have a health date created for a specific date until they 
 
 - AAU, I want to add a class that I plan on going to on a particular date
 - AAU, I want to add an exercise that I plan on doing on a particular date
-
+- AAU, I want to change a class I have planned for a particular date
+- AAU, I want to change an exercise I have planned for a particular date
 
 ![API Functionality Stories](./readme/us_api.png)
 
