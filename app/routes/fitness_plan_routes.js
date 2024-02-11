@@ -29,8 +29,8 @@ router.post('/fitness/:healthDateId', requireToken, (req, res, next) => {
 		.catch(next)
 })
 
-// UPDATE fitness plan - must include a type: ClassPlan or type: ExercisePlan
-// POST /fitness/5a7db6c74d55bc51bdf39793/65c8dd91771a0594e0163f5a
+// UPDATE fitness plan
+// PATCH /fitness/5a7db6c74d55bc51bdf39793/65c8dd91771a0594e0163f5a
 router.patch('/fitness/:healthDateId/:fitnessPlanId', requireToken, (req, res, next) => {
 
     const { healthDateId, fitnessPlanId } = req.params
@@ -41,6 +41,24 @@ router.patch('/fitness/:healthDateId/:fitnessPlanId', requireToken, (req, res, n
             requireOwnership(req, healthDate)
             const theFitnessPlan = healthDate.fitnessPlans.id(fitnessPlanId)
             theFitnessPlan.set(req.body.fitnessPlan)
+            return healthDate.save()
+        })
+		.then(() => res.sendStatus(204))
+		.catch(next)
+})
+
+// DESTROY fitness plan
+// DELETE /fitness/5a7db6c74d55bc51bdf39793/65c8dd91771a0594e0163f5a
+router.delete('/fitness/:healthDateId/:fitnessPlanId', requireToken, (req, res, next) => {
+
+    const { healthDateId, fitnessPlanId } = req.params
+
+	HealthDate.findById(healthDateId)
+        .then(handle404)
+        .then((healthDate) => {
+            requireOwnership(req, healthDate)
+            const theFitnessPlan = healthDate.fitnessPlans.id(fitnessPlanId)
+            theFitnessPlan.deleteOne()
             return healthDate.save()
         })
 		.then(() => res.sendStatus(204))
