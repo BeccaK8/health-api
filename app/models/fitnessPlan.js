@@ -1,0 +1,93 @@
+const { Timestamp } = require('mongodb')
+const mongoose = require('mongoose')
+
+/*
+overallFocusAreas: Strength, Endurance, Recovery
+const fitnessFocusAreas = [
+    { name: 'Strength', description: 'Strength training to strengthen the body', color: '#FFCCCC', subAreas: [ 'Total Body', 'Upper Body', 'Lower Body'] },
+    { name: 'Cardio', description: 'Cardio training to strengthen the body', color: 'FFCC99', subAreas: [] },
+    { name: 'Core', description: 'Core training to strengthen the body', color: '#CCCCFF', subAreas: [] },
+    { name: 'Recovery', description: 'Recovery training to strengthen the body', color: 'CCFF99', subAreas: [] },
+]
+*/
+const fitnessPlanSchema = new mongoose.Schema(
+	{
+        fitnessFocusArea: {
+            type: String,
+            required: true,
+            enum: [ 'Strength', 'Cardio', 'Core', 'Recovery', 'Combination' ]
+        },
+        fitnessSubFocusArea: {
+            type: String,
+        },
+		completed: {
+            type: Boolean,
+            required: true,
+            default: false
+		}
+	},
+	{
+		timestamps: true,
+        toObject: { virtuals: true },
+        toJSON: { virtuals: true },
+        discriminatorKey: 'type'
+	}
+)
+
+const FitnessPlan = mongoose.model('FitnessPlan', fitnessPlanSchema)
+
+// Create discriminators (aka sub-classes) of FitnessPlan
+const ClassPlan = FitnessPlan.discriminator('ClassPlan', 
+    new mongoose.Schema({
+        name: {
+            type: String,
+            required: true,
+        },
+        host: {
+            type: String,
+            required: true,
+        },
+        location: {
+            type: String,
+        },
+        time: {
+            type: Timestamp,
+        },
+        isVirtual: {
+            type: Boolean,
+            required: true,
+            default: false
+        }
+    })
+)
+
+const ExercisePlan = FitnessPlan.discriminator('ExercisePlan', 
+    new mongoose.Schema({
+        name: {
+            type: String,
+            required: true,
+        },
+        reps: {
+            type: Number,
+        },
+        sets: {
+            type: Number,
+        },
+    })
+)
+
+// A date can only be planned if it is today or in the future
+fitnessPlanSchema.virtual('isClass').get(function() {
+    return false
+})
+
+// A date can only be tracked (logged) if it is today or in the future
+fitnessPlanSchema.virtual('isExercise').get(function() {
+    return true
+})
+
+module.exports = { 
+    FitnessPlan, 
+    ClassPlan, 
+    ExercisePlan 
+}

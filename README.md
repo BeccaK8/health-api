@@ -74,10 +74,10 @@ Note: A user will not have a health date created for a specific date until they 
 
 ## Technologies Used
 
-MERN Stack - API 
-MongoDB, including discriminators
-Mongoose
-Express.js
+- MERN Stack - API 
+- MongoDB, including discriminators
+- Mongoose
+- Express.js
 
 
 ## Next Steps / Ice Box
