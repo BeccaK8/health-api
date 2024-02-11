@@ -33,6 +33,11 @@ Note: A user will not have a health date created for a specific date until they 
 - AAU, I want to delete everything associated with a health date in case I decide to forget that whole plan
 
 
+### Fitness Plans
+
+- AAU, I want to add a class that I plan on going to on a particular date
+- AAU, I want to add an exercise that I plan on doing on a particular date
+
 
 ![API Functionality Stories](./readme/us_api.png)
 
@@ -70,6 +75,15 @@ Note: A user will not have a health date created for a specific date until they 
 | POST   | `/dates`               | `health_date#create`  |
 | PATCH  | `/dates/:id`           | `health_date#update`  |
 | DELETE | `/dates/:id`           | `health_date#delete`  |
+
+
+### Fitness Plan Routes
+
+| Verb   | URI Pattern              | Controller#Action |
+|--------|--------------------------|-------------------|
+| POST   | `/fitness/:healthDateId` | `fitnessPlan#create`  |
+| POST   | `/fitness/:healthDateId/:fitnessPlanId` | `fitnessPlan#update`  |
+| POST   | `/fitness/:healthDateId/:fitnessPlanId` | `fitnessPlan#delete`  |
 
 
 ## Technologies Used
@@ -151,7 +165,7 @@ All of these entities will be stored in one collection in the database as sub-do
 
 ### CRUD for Health API's Models
 
-When using these models in Create and Update, I will need separate routes for each model as they have different fields.
+When using these models in Create and Update, I can just use one route for both models as long as the `type` discriminator key is passed and set to the appropriate fitness plan type.
 
 I should be able to have one Delete route as I'm just deleting by ID, but I'll use Postman to test that theory out.  Worse case, I create two routes.
 
