@@ -12,15 +12,26 @@ It will be utilized by the **Health Oasis** client application. (URL coming soon
 
 ### User Authentication
 
-AAV, I want to sign up for Health Oasis
-AAU, I want to sign into my account with Health Oasis
-AAU, I want to change my password
-AAU, I want to sign out of my account
+- AAV, I want to sign up for Health Oasis
+- AAU, I want to sign into my account with Health Oasis
+- AAU, I want to change my password
+- AAU, I want to sign out of my account
 
 ### User Profile
 
-AAU, I want to see my user profile
-AAU, I want to update my user profile
+- AAU, I want to see my user profile
+- AAU, I want to update my user profile
+
+### Health Date
+
+Note: A user will not have a health date created for a specific date until they begin to plan healthy activities for that day.
+
+- AAU, I want to get all the dates I have plans created for
+- AAU, I want to get a specific date and all the information associated with it
+- AAU, I want to create a new date that I can associate health plans with
+- AAU, I want to update the focus area and personal statement for a particular date
+- AAU, I want to delete everything associated with a health date in case I decide to forget that whole plan
+
 
 
 ![API Functionality Stories](./readme/us_api.png)

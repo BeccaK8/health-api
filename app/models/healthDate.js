@@ -37,24 +37,21 @@ const healthDateSchema = new mongoose.Schema(
 	}
 )
 
+const getFormattedHealthDate = (aDate) => {
+    const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(aDate)
+    const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(aDate)
+    const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(aDate)
+    return `${year}-${month}-${day}`
+}
+
 // A date can only be planned if it is today or in the future
 healthDateSchema.virtual('isPlannable').get(function() {
-    let today = new Date()
-    const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(today)
-    const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(today)
-    const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(today)
-    const todayString = `${year}-${month}-${day}`
-    return this.dateString >= todayString
+    return this.dateString >= getFormattedHealthDate(new Date())
 })
 
 // A date can only be tracked (logged) if it is today or in the future
 healthDateSchema.virtual('isTrackable').get(function() {
-    let today = new Date()
-    const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(today)
-    const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(today)
-    const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(today)
-    const todayString = `${year}-${month}-${day}`
-    return this.dateString <= todayString
+    return this.dateString <= getFormattedHealthDate(new Date())
 })
 
 module.exports = mongoose.model('HealthDate', healthDateSchema)
