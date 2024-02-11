@@ -56,6 +56,21 @@ router.post('/dates', requireToken, (req, res, next) => {
 		.catch(next)
 })
 
+// UPDATE
+// PATCH /dates/5a7db6c74d55bc51bdf39793
+router.patch('/dates/:id', requireToken, removeBlanks, (req, res, next) => {
+	delete req.body.healthDate.owner
+
+	HealthDate.findById(req.params.id)
+		.then(handle404)
+		.then((healthDate) => {
+			requireOwnership(req, healthDate)
+			return healthDate.updateOne(req.body.healthDate)
+		})
+		.then(() => res.sendStatus(204))
+		.catch(next)
+})
+
 // DESTROY
 // DELETE /dates/5a7db6c74d55bc51bdf39793
 router.delete('/dates/:id', requireToken, (req, res, next) => {
