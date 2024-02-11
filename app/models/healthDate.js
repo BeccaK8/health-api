@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+
+const { fitnessPlanSchema, classPlanSchema, exercisePlanSchema } = require('./fitnessPlan')
 /*
 overallFocusAreas: Strength, Endurance, Recovery
 const fitnessFocusAreas = [
@@ -24,6 +26,7 @@ const healthDateSchema = new mongoose.Schema(
             required: true,
             enum: ['Strength', 'Endurance', 'Recovery']
         },
+        fitnessPlans: [fitnessPlanSchema],
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
@@ -36,6 +39,10 @@ const healthDateSchema = new mongoose.Schema(
         toJSON: { virtuals: true },
 	}
 )
+
+// set up discriminators for fitness plans
+healthDateSchema.path('fitnessPlans').discriminator('ClassPlan', classPlanSchema)
+healthDateSchema.path('fitnessPlans').discriminator('ExercisePlan', exercisePlanSchema)
 
 const getFormattedHealthDate = (aDate) => {
     const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(aDate)

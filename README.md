@@ -164,6 +164,8 @@ Mongoose Docs: https://mongoosejs.com/docs/discriminators.html
 
 Other Site: https://techinsights.manisuec.com/mongodb/mongoose-discriminator-non-dry-way-inherit-properties/
 
+Embedding Discriminators (available in Mongoose 4.8): https://thecodebarbarian.com/mongoose-4.8-embedded-discriminators.html
+
 
 ### Fallback Options
 

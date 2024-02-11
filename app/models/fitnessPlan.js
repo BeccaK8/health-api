@@ -1,4 +1,3 @@
-const { Timestamp } = require('mongodb')
 const mongoose = require('mongoose')
 
 /*
@@ -34,11 +33,9 @@ const fitnessPlanSchema = new mongoose.Schema(
 	}
 )
 
-const FitnessPlan = mongoose.model('FitnessPlan', fitnessPlanSchema)
-
-// Create discriminators (aka sub-classes) of FitnessPlan
-const ClassPlan = FitnessPlan.discriminator('ClassPlan', 
-    new mongoose.Schema({
+// Create discriminator schemas (aka sub-classes) of FitnessPlan
+const classPlanSchema = new mongoose.Schema(
+    {
         name: {
             type: String,
             required: true,
@@ -51,18 +48,26 @@ const ClassPlan = FitnessPlan.discriminator('ClassPlan',
             type: String,
         },
         time: {
-            type: Timestamp,
+            type: String,
         },
         isVirtual: {
             type: Boolean,
             required: true,
             default: false
         }
-    })
+    }, 
+    {
+        toObject: { virtuals: true },
+        toJSON: { virtuals: true },
+    }
 )
 
-const ExercisePlan = FitnessPlan.discriminator('ExercisePlan', 
-    new mongoose.Schema({
+classPlanSchema.methods.displayName = () => {
+    return `${this.type}: ${this.name}`
+}
+
+const exercisePlanSchema = new mongoose.Schema(
+    {
         name: {
             type: String,
             required: true,
@@ -73,8 +78,16 @@ const ExercisePlan = FitnessPlan.discriminator('ExercisePlan',
         sets: {
             type: Number,
         },
-    })
+    }, 
+    {
+        toObject: { virtuals: true },
+        toJSON: { virtuals: true },
+    }
 )
+
+exercisePlanSchema.methods.displayName = () => {
+    return `${this.type}: ${this.name}`
+}
 
 // A date can only be planned if it is today or in the future
 fitnessPlanSchema.virtual('isClass').get(function() {
@@ -87,7 +100,7 @@ fitnessPlanSchema.virtual('isExercise').get(function() {
 })
 
 module.exports = { 
-    FitnessPlan, 
-    ClassPlan, 
-    ExercisePlan 
+    fitnessPlanSchema,
+    classPlanSchema,
+    exercisePlanSchema
 }
