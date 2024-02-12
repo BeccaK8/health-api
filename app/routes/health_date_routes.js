@@ -18,9 +18,7 @@ router.get('/dates', requireToken, (req, res, next) => {
 		.then((healthDates) => {
 			return healthDates.map((d) => d.toObject())
 		})
-		// respond with status 200 and JSON of the examples
 		.then((healthDates) => res.status(200).json({ healthDates: healthDates }))
-		// if an error occurs, pass it to the handler
 		.catch(next)
 })
 
