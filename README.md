@@ -2,18 +2,18 @@
 
 The Health API will manage create, read, update, and delete functionality for:
 - Users (including authentication and authorization using token auth)
-- Fitness Dates - a set of information for a user on a specific date to manage their health plans and goals for that date
+- Health Dates - a set of information for a user on a specific date to manage their health plans and goals for that date
 - Fitness Plans - details on classes, exercises, etc that a user plans for a particular date
 
-It will be utilized by the **Health Oasis** client application. (URL coming soon!)
+It will be utilized by the **Health Hub** client application. (URL coming soon!)
 
 
 ## API Functionality
 
 ### User Authentication
 
-- AAV, I want to sign up for Health Oasis
-- AAU, I want to sign into my account with Health Oasis
+- AAV, I want to sign up for Health Hub
+- AAU, I want to sign into my account with Health Hub
 - AAU, I want to change my password
 - AAU, I want to sign out of my account
 
