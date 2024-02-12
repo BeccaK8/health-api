@@ -95,6 +95,7 @@ Note: A user will not have a health date created for a specific date until they 
 - MongoDB, including discriminators
 - Mongoose
 - Express.js
+- Node.js
 
 
 ## Next Steps / Ice Box
