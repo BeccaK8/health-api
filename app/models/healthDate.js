@@ -16,7 +16,6 @@ const healthDateSchema = new mongoose.Schema(
         dateString: {
             type: String,
             required: true,
-            unique: true
         },
 		goalStatement: {
             type: String,

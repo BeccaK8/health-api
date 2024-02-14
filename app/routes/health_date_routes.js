@@ -35,10 +35,11 @@ router.get('/dates/:id', requireToken, (req, res, next) => {
 // SHOW
 // GET /dates/byDate/2024-02-09
 router.get('/dates/byDate/:dateStr', requireToken, (req, res, next) => {
-
+    console.log('make it here!!!')
+    console.log('req.params.dateStr = ', req.params.dateStr)
+    console.log('req.user = ', req.user)
 	HealthDate.findOne({ 'dateString': req.params.dateStr, owner: req.user })
-		.then(handle404)
-		.then((healthDate) => res.status(200).json({ healthDate: healthDate.toObject() }))
+		.then((healthDate) => res.status(200).json({ healthDate: healthDate ? healthDate.toObject() : {} }))
 		.catch(next)
 })
 
