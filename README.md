@@ -7,6 +7,8 @@ The Health API will manage create, read, update, and delete functionality for:
 
 It will be utilized by the **Health Hub** client application. (URL coming soon!)
 
+Deployed API URL: https://health-api-rlk.fly.dev
+
 
 ## API Functionality
 
