@@ -7,6 +7,8 @@ The Health API will manage create, read, update, and delete functionality for:
 
 It will be utilized by the **Health Hub** client application. (URL coming soon!)
 
+## Getting Started
+
 Deployed API URL: https://health-api-rlk.fly.dev
 
 
@@ -44,7 +46,6 @@ Note: A user will not have a health date created for a specific date until they 
 - AAU, I want to remove a class I have planned for a particular date
 - AAU, I want to remove an exercise I have planned for a particular date
 
-![API Functionality Stories](./readme/us_api.png)
 
 ## ERD
 
@@ -102,7 +103,15 @@ Note: A user will not have a health date created for a specific date until they 
 
 ## Next Steps / Ice Box
 
-Coming soon...
+- AAU, I want to set goals for myself and track completion towards those on a daily basis
+- AAU, I want to see metrics of my completed vs uncompleted focus plans
+- AAU, I want to track health plans like water and diet
+- AAU, I want to track mental stimulation plans like reading or puzzles
+- AAU, I want to pick from a master list of exercises
+- AAU, I want to save my favorites exercises to pick from
+- AAU, I want to pick from a master list of classes
+- AAU, I want to save my favorites classes to pick from
+- AAU, I want to see a schedule of my time-based classes
 
 
 ## More Information on API Usage of MongoDB Discriminators
