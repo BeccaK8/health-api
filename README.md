@@ -99,6 +99,7 @@ Note: A user will not have a health date created for a specific date until they 
 - Mongoose
 - Express.js
 - Node.js
+- Postman - API Testing
 
 
 ## Next Steps / Ice Box
